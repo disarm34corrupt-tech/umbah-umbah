@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const initialForm = {
   nama: "",
@@ -53,7 +53,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/pricing")
+    fetch(`${API_URL}/api/pricing`)
       .then((res) => res.json())
       .then((data) => setPricing(data))
       .catch((err) => console.error("Fetch pricing error:", err));
@@ -76,7 +76,7 @@ export default function App() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/booking", {
+      const response = await fetch(`${API_URL}/api/booking`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -414,4 +414,3 @@ export default function App() {
     </div>
   );
 }
-
