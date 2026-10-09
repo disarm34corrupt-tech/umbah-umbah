@@ -1,0 +1,264 @@
+:root {
+  --black: #0b0b0c;
+  --bg: #101112;
+  --panel: #17191b;
+  --panel-soft: #1e2124;
+  --red: #ef4444;
+  --red-deep: #dc2626;
+  --yellow: #facc15;
+  --yellow-soft: #fef3c7;
+  --white: #f8fafc;
+  --muted: #cbd5e1;
+  --line: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, var(--black) 0%, #151719 35%, #08090a 100%);
+  color: var(--white);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 36px 24px 80px;
+}
+
+.loading {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(250, 204, 21, 0.08), rgba(11, 11, 12, 0.9));
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 48px 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(250, 204, 21, 0.18), transparent 30%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--red), var(--yellow));
+  color: var(--black);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero-text {
+  position: relative;
+}
+
+.hero-text h1 {
+  margin: 8px 0 12px;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+.hero-text p {
+  margin: 0;
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.tag {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  font-weight: 800;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.booking-card,
+.price-card,
+.receipt {
+  background: rgba(23, 25, 27, 0.96);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+}
+
+.booking-card,
+.price-card {
+  padding: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+h2,
+h3 {
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  color: var(--yellow-soft);
+  font-weight: 700;
+}
+
+input,
+select,
+button {
+  border-radius: 12px;
+  border: 1px solid rgba(250, 204, 21, 0.25);
+  padding: 12px 14px;
+  background: rgba(11, 11, 12, 0.9);
+  color: var(--white);
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+button {
+  width: 100%;
+  background: linear-gradient(135deg, var(--red), #f97316, var(--yellow));
+  border: none;
+  color: var(--black);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 12px 24px rgba(239, 68, 68, 0.35);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(250, 204, 21, 0.3);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.summary-box {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(250, 204, 21, 0.08));
+  border: 1px solid rgba(250, 204, 21, 0.2);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.summary-box p {
+  margin: 0 0 8px;
+  color: var(--yellow-soft);
+}
+
+.summary-box h3 {
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.price-card h3 {
+  margin-bottom: 16px;
+  color: var(--yellow);
+}
+
+.price-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--white);
+}
+
+.price-card li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.extra {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.extra p {
+  margin: 8px 0;
+}
+
+.receipt {
+  margin-top: 24px;
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.08), rgba(11, 11, 12, 0.96));
+}
+
+.receipt h2 {
+  margin-bottom: 14px;
+  color: var(--yellow);
+}
+
+.receipt p {
+  margin: 10px 0;
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .content,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
