@@ -1,641 +1,423 @@
-:root {
-  --black: #0b0b0d;
-  --bg: #101112;
-  --panel: #17191b;
-  --panel-soft: #1f2225;
-  --red: #ef4444;
-  --red-deep: #dc2626;
-  --yellow: #facc15;
-  --yellow-soft: #fef3c7;
-  --white: #f8fafc;
-  --muted: #dfe7f2;
-  --line: rgba(255, 255, 255, 0.1);
-  --shadow: rgba(0, 0, 0, 0.35);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: linear-gradient(180deg, #09090b 0%, #121416 28%, #0a0d12 100%);
-  color: var(--white);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-select {
-  font: inherit;
-}
-
-.page-shell {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 24px 80px;
-}
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 20px;
-  background: rgba(18, 20, 22, 0.75);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  position: sticky;
-  top: 12px;
-  z-index: 20;
-  backdrop-filter: blur(12px);
-}
-
-.brand-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--red), var(--yellow));
-  color: var(--black);
-  font-weight: 900;
-}
-
-.brand-name {
-  margin: 0;
-  font-weight: 800;
-}
-
-.brand-wrap small {
-  color: var(--muted);
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  color: var(--muted);
-}
-
-.nav a {
-  transition: color 0.2s ease;
-}
-
-.nav a:hover {
-  color: var(--yellow);
-}
-
-.nav-button,
-.primary-btn,
-.secondary-btn {
-  border-radius: 12px;
-  font-weight: 800;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.nav-button,
-.primary-btn {
-  background: linear-gradient(135deg, var(--red), #f97316, var(--yellow));
-  color: var(--black);
-  border: none;
-  padding: 12px 18px;
-  box-shadow: 0 12px 24px rgba(239, 68, 68, 0.35);
-}
-
-.secondary-btn {
-  background: transparent;
-  color: var(--white);
-  border: 1px solid rgba(250, 204, 21, 0.35);
-  padding: 12px 18px;
-}
-
-.nav-button:hover,
-.primary-btn:hover,
-.secondary-btn:hover {
-  transform: translateY(-1px);
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 1.5fr 0.9fr;
-  gap: 24px;
-  align-items: center;
-  padding: 44px 32px;
-  margin-top: 24px;
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.14), rgba(250, 204, 21, 0.05), rgba(11, 11, 12, 0.9));
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-}
-
-.hero-copy {
-  position: relative;
-  z-index: 1;
-}
-
-.mini-label {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(250, 204, 21, 0.2);
-  color: var(--yellow);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-}
-
-.mini-label.dark {
-  background: rgba(250, 204, 21, 0.08);
-  border-color: rgba(250, 204, 21, 0.15);
-}
-
-.hero-copy h1 {
-  margin: 18px 0 14px;
-  font-size: clamp(2.5rem, 4vw, 4.5rem);
-  line-height: 1.04;
-}
-
-.hero-copy p {
-  margin: 0;
-  max-width: 680px;
-  color: var(--muted);
-  font-size: 1.08rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 26px;
-}
-
-.stats-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  margin-top: 28px;
-}
-
-.stats-row div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.stats-row strong {
-  font-size: 1.6rem;
-  color: var(--white);
-}
-
-.stats-row span {
-  color: var(--muted);
-  font-size: 0.92rem;
-}
-
-.hero-card {
-  position: relative;
-  padding: 24px;
-  border-radius: 24px;
-  border: 1px solid rgba(250, 204, 21, 0.2);
-  background: linear-gradient(180deg, rgba(17, 17, 18, 0.9), rgba(22, 23, 24, 0.7));
-  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.38);
-}
-
-.card-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, rgba(250, 204, 21, 0.2), transparent 35%);
-  pointer-events: none;
-}
-
-.card-title,
-.hero-card h3,
-.hero-card ul,
-.card-price {
-  position: relative;
-  z-index: 1;
-}
-
-.card-title {
-  margin: 0 0 12px;
-  color: var(--yellow-soft);
-  text-transform: uppercase;
-  letter-spacing: 1.8px;
-  font-size: 0.75rem;
-  font-weight: 700;
-}
-
-.hero-card h3 {
-  margin: 0 0 14px;
-  font-size: 2rem;
-}
-
-.hero-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  color: var(--muted);
-}
-
-.card-price {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-}
-
-.card-price span {
-  color: var(--muted);
-}
-
-.card-price strong {
-  font-size: 1.7rem;
-  color: var(--yellow);
-}
-
-.section-block,
-.feature-band,
-.steps-block,
-.testimonial-block,
-.booking-wrap {
-  margin-top: 60px;
-}
-
-.section-head {
-  margin-bottom: 24px;
-}
-
-.section-head h2 {
-  margin-top: 12px;
-  font-size: clamp(1.8rem, 2.6vw, 2.7rem);
-}
-
-.service-grid,
-.pricing-grid,
-.steps-grid,
-.testimonial-grid {
-  display: grid;
-  gap: 20px;
-}
-
-.service-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.service-card {
-  background: rgba(20, 22, 24, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 22px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.18);
-}
-
-.service-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  margin-bottom: 14px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--red), var(--yellow));
-  color: var(--black);
-  font-weight: 900;
-}
-
-.service-type {
-  margin: 0 0 8px;
-  color: var(--yellow);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-}
-
-.service-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.5rem;
-}
-
-.service-card p {
-  margin: 0 0 18px;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.service-card strong {
-  display: inline-block;
-  font-size: 1rem;
-  color: var(--white);
-}
-
-.feature-band {
-  background: rgba(15, 17, 19, 0.82);
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  padding: 28px 24px;
-}
-
-.left {
-  margin-bottom: 18px;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.benefit-item {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
-  padding: 16px 18px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.steps-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.step-card {
-  background: rgba(17, 19, 22, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 26px 20px;
-}
-
-.step-card span {
-  display: inline-grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  margin-bottom: 14px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--red), var(--yellow));
-  color: var(--black);
-  font-weight: 900;
-}
-
-.step-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.pricing-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.price-card {
-  background: rgba(18, 20, 22, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 22px 18px;
-  text-align: center;
-}
-
-.price-card-main {
-  background: linear-gradient(180deg, rgba(239, 68, 68, 0.08), rgba(18, 20, 22, 0.9));
-  border-color: rgba(250, 204, 21, 0.18);
-}
-
-.price-card p,
-.price-card small {
-  color: var(--muted);
-  margin: 0;
-}
-
-.price-card h3 {
-  margin: 12px 0 8px;
-  font-size: 2rem;
-}
-
-.addon-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  padding-top: 22px;
-  color: var(--muted);
-}
-
-.addon-row strong {
-  color: var(--yellow);
-}
-
-.booking-wrap {
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.booking-card,
-.receipt {
-  background: rgba(18, 20, 22, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: 26px;
-  box-shadow: 0 24px 38px rgba(0, 0, 0, 0.18);
-}
-
-.booking-head {
-  margin-bottom: 12px;
-}
-
-.booking-head h2 {
-  margin-top: 10px;
-  font-size: clamp(1.8rem, 2.6vw, 2.5rem);
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-label {
-  color: var(--yellow-soft);
-  font-weight: 700;
-}
-
-input,
-select,
-button {
-  border-radius: 12px;
-  border: 1px solid rgba(250, 204, 21, 0.25);
-  padding: 12px 14px;
-  background: rgba(11, 11, 12, 0.9);
-  color: var(--white);
-}
-
-input::placeholder {
-  color: #94a3b8;
-}
-
-button {
-  width: 100%;
-  background: linear-gradient(135deg, var(--red), #f97316, var(--yellow));
-  border: none;
-  color: var(--black);
-  font-weight: 900;
-  cursor: pointer;
-  box-shadow: 0 12px 24px rgba(239, 68, 68, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-  transform: translateY(-1px);
-}
-
-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.summary-box {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(250, 204, 21, 0.08));
-  border: 1px solid rgba(250, 204, 21, 0.15);
-  border-radius: 14px;
-  padding: 16px;
-}
-
-.summary-box p {
-  margin: 0 0 8px;
-  color: var(--yellow-soft);
-}
-
-.summary-box h3 {
-  margin: 0;
-  font-size: 2rem;
-}
-
-.receipt-head {
-  margin-bottom: 18px;
-}
-
-.receipt-head h3 {
-  margin-top: 10px;
-  font-size: 1.7rem;
-}
-
-.receipt-body p,
-.receipt-empty p {
-  margin: 10px 0;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.total-line {
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-  color: var(--white) !important;
-}
-
-.testimonial-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.testimonial-grid blockquote {
-  margin: 0;
-  background: rgba(18, 20, 22, 0.85);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 22px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.testimonial-grid footer {
-  margin-top: 14px;
-  color: var(--yellow);
-  font-weight: 700;
-}
-
-@media (max-width: 900px) {
-  .hero,
-  .booking-wrap,
-  .service-grid,
-  .pricing-grid,
-  .steps-grid,
-  .testimonial-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .topbar {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .page-shell {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .hero,
-  .booking-card,
-  .receipt,
-  .feature-band,
-  .service-card,
-  .step-card,
-  .price-card {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
-  .hero-actions,
-  .stats-row,
-  .benefits-grid,
-  .grid {
-    grid-template-columns: 1fr;
-    display: grid;
-  }
-
-  .nav {
-    gap: 14px;
-    font-size: 0.95rem;
-  }
+import { useMemo, useState } from "react";
+
+const initialForm = {
+  nama: "",
+  mobil: "small",
+  layanan: "standard",
+  addOn: "none",
+  tanggal: "",
+  jam: "",
+  metodePembayaran: "e-wallet",
+};
+
+const services = [
+  {
+    title: "Standard Wash",
+    subtitle: "30 menit",
+    description: "Cuci mobil cepat, bersih, dan tetap detail. Cocok untuk harian.",
+    highlight: "Mulai dari Rp 50.000",
+  },
+  {
+    title: "Premium Wash",
+    subtitle: "60 menit",
+    description: "Cuci lebih detail, lebih halus, dan tampil lebih kinclong.",
+    highlight: "Mulai dari Rp 80.000",
+  },
+  {
+    title: "Deep Cleansing",
+    subtitle: "Extra care",
+    description: "Membersihkan bagian detail yang sulit dijangkau untuk hasil maksimal.",
+    highlight: "+Rp 15.000",
+  },
+];
+
+const benefits = [
+  "Proses cepat 30–60 menit",
+  "Teknisi berpengalaman",
+  "Peralatan modern dan aman",
+  "Booking online tanpa ribet",
+];
+
+const steps = [
+  "Pilih ukuran mobil dan jenis layanan",
+  "Pilih tanggal & jam booking",
+  "Bayar virtual dan lihat konfirmasi",
+];
+
+const pricing = {
+  small: {
+    standard: 50000,
+    premium: 80000,
+  },
+  medium: {
+    standard: 75000,
+    premium: 120000,
+  },
+  large: {
+    standard: 100000,
+    premium: 150000,
+  },
+};
+
+const addOns = {
+  deep: 15000,
+  hydraulic: 25000,
+};
+
+const formatRupiah = (value) => new Intl.NumberFormat("id-ID").format(value);
+
+export default function App() {
+  const [form, setForm] = useState(initialForm);
+  const [booking, setBooking] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const total = useMemo(() => {
+    const base = pricing[form.mobil][form.layanan];
+    const extra = form.addOn && form.addOn !== "none" ? addOns[form.addOn] || 0 : 0;
+    return base + extra;
+  }, [form]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+
+    const generatedBooking = {
+      id: `UM-${Date.now()}`,
+      nama: form.nama || "Pelanggan",
+      mobil: form.mobil,
+      layanan: form.layanan,
+      addOn: form.addOn || "none",
+      tanggal: form.tanggal,
+      jam: form.jam,
+      metodePembayaran: form.metodePembayaran,
+      total,
+    };
+
+    setTimeout(() => {
+      setBooking(generatedBooking);
+      setLoading(false);
+    }, 500);
+  };
+
+  const layananLabel = {
+    standard: "Standard (30 menit)",
+    premium: "Premium (60 menit)",
+  };
+
+  return (
+    <div className="page-shell">
+      <header className="topbar">
+        <div className="brand-wrap">
+          <div className="brand-mark">U</div>
+          <div>
+            <p className="brand-name">Umbah Umbah</p>
+            <small>Auto Wash</small>
+          </div>
+        </div>
+
+        <nav className="nav">
+          <a href="#services">Layanan</a>
+          <a href="#pricing">Harga</a>
+          <a href="#booking">Booking</a>
+        </nav>
+
+        <button className="nav-button">Pesan Sekarang</button>
+      </header>
+
+      <main>
+        <section className="hero">
+          <div className="hero-copy">
+            <span className="mini-label">Auto Wash Service</span>
+            <h1>Cuci mobil otomatis yang cepat, bersih, dan praktis.</h1>
+            <p>
+              Booking online dari rumah. Pilih paket, tentukan tanggal, dan nikmati hasil
+              cuci mobil yang kinclong tanpa antre.
+            </p>
+
+            <div className="hero-actions">
+              <a href="#booking" className="primary-btn">Booking Sekarang</a>
+              <a href="#pricing" className="secondary-btn">Lihat Harga</a>
+            </div>
+
+            <div className="stats-row">
+              <div>
+                <strong>2.000+</strong>
+                <span>Mobil selesai</span>
+              </div>
+              <div>
+                <strong>4.9/5</strong>
+                <span>Rating pelanggan</span>
+              </div>
+              <div>
+                <strong>30-60</strong>
+                <span>Menit proses</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-card">
+            <div className="card-glow" />
+            <p className="card-title">Paket Populer</p>
+            <h3>Premium Wash</h3>
+            <ul>
+              <li>Interior & exterior detail</li>
+              <li>Waterless shine finishing</li>
+              <li>Hydraulic treatment</li>
+            </ul>
+            <div className="card-price">
+              <span>Mulai</span>
+              <strong>Rp 80.000</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" className="section-block">
+          <div className="section-head">
+            <span className="mini-label dark">Layanan Kami</span>
+            <h2>Pilih sesuai kebutuhan mobilmu</h2>
+          </div>
+
+          <div className="service-grid">
+            {services.map((item) => (
+              <article key={item.title} className="service-card">
+                <div className="service-icon">✦</div>
+                <p className="service-type">{item.subtitle}</p>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <strong>{item.highlight}</strong>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="feature-band">
+          <div className="section-head left">
+            <span className="mini-label dark">Kenapa pilih kami</span>
+            <h2>Lebih cepat, lebih bersih, lebih aman</h2>
+          </div>
+
+          <div className="benefits-grid">
+            {benefits.map((item) => (
+              <div key={item} className="benefit-item">
+                ✓ {item}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="steps-block">
+          <div className="section-head">
+            <span className="mini-label dark">Cara order</span>
+            <h2>3 langkah mudah</h2>
+          </div>
+
+          <div className="steps-grid">
+            {steps.map((step, index) => (
+              <div key={step} className="step-card">
+                <span>{index + 1}</span>
+                <p>{step}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="pricing" className="section-block pricing-block">
+          <div className="section-head">
+            <span className="mini-label dark">Harga</span>
+            <h2>Daftar paket cuci mobil</h2>
+          </div>
+
+          <div className="pricing-grid">
+            <div className="price-card price-card-main">
+              <p>Small</p>
+              <h3>Rp 50.000</h3>
+              <small>Standard</small>
+            </div>
+            <div className="price-card price-card-main">
+              <p>Medium</p>
+              <h3>Rp 75.000</h3>
+              <small>Standard</small>
+            </div>
+            <div className="price-card price-card-main">
+              <p>Large</p>
+              <h3>Rp 100.000</h3>
+              <small>Standard</small>
+            </div>
+            <div className="price-card">
+              <p>Small</p>
+              <h3>Rp 80.000</h3>
+              <small>Premium</small>
+            </div>
+            <div className="price-card">
+              <p>Medium</p>
+              <h3>Rp 120.000</h3>
+              <small>Premium</small>
+            </div>
+            <div className="price-card">
+              <p>Large</p>
+              <h3>Rp 150.000</h3>
+              <small>Premium</small>
+            </div>
+          </div>
+
+          <div className="addon-row">
+            <span>Deep Cleansing</span>
+            <strong>+Rp 15.000</strong>
+            <span>Hydraulic</span>
+            <strong>+Rp 25.000</strong>
+          </div>
+        </section>
+
+        <section id="booking" className="booking-wrap">
+          <div className="booking-card">
+            <form onSubmit={handleSubmit}>
+              <div className="booking-head">
+                <span className="mini-label dark">Booking online</span>
+                <h2>Pesan cuci mobil</h2>
+              </div>
+
+              <div className="field">
+                <label htmlFor="nama">Nama Pemesan</label>
+                <input
+                  id="nama"
+                  type="text"
+                  name="nama"
+                  value={form.nama}
+                  onChange={handleChange}
+                  placeholder="Masukkan nama"
+                  required
+                />
+              </div>
+
+              <div className="grid">
+                <div className="field">
+                  <label htmlFor="mobil">Ukuran Mobil</label>
+                  <select id="mobil" name="mobil" value={form.mobil} onChange={handleChange}>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
+
+                <div className="field">
+                  <label htmlFor="layanan">Layanan</label>
+                  <select id="layanan" name="layanan" value={form.layanan} onChange={handleChange}>
+                    <option value="standard">Standard (30 menit)</option>
+                    <option value="premium">Premium (60 menit)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid">
+                <div className="field">
+                  <label htmlFor="addOn">Extra Service</label>
+                  <select id="addOn" name="addOn" value={form.addOn} onChange={handleChange}>
+                    <option value="none">Tidak ada</option>
+                    <option value="deep">Deep Cleansing</option>
+                    <option value="hydraulic">Hydraulic</option>
+                  </select>
+                </div>
+
+                <div className="field">
+                  <label htmlFor="metodePembayaran">Metode Pembayaran</label>
+                  <select
+                    id="metodePembayaran"
+                    name="metodePembayaran"
+                    value={form.metodePembayaran}
+                    onChange={handleChange}
+                  >
+                    <option value="e-wallet">E-Wallet</option>
+                    <option value="bank-transfer">Bank Transfer</option>
+                    <option value="cashless">Cashless</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid">
+                <div className="field">
+                  <label htmlFor="tanggal">Tanggal</label>
+                  <input
+                    id="tanggal"
+                    type="date"
+                    name="tanggal"
+                    value={form.tanggal}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div className="field">
+                  <label htmlFor="jam">Jam</label>
+                  <input
+                    id="jam"
+                    type="time"
+                    name="jam"
+                    value={form.jam}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="summary-box">
+                <p>Total estimasi</p>
+                <h3>Rp {formatRupiah(total)}</h3>
+              </div>
+
+              <button type="submit" disabled={loading}>
+                {loading ? "Memproses..." : "Pesan Sekarang"}
+              </button>
+            </form>
+          </div>
+
+          <aside className="receipt">
+            <div className="receipt-head">
+              <span className="mini-label dark">Konfirmasi</span>
+              <h3>Booking detail</h3>
+            </div>
+
+            {booking ? (
+              <div className="receipt-body">
+                <p><strong>Order ID:</strong> {booking.id}</p>
+                <p><strong>Nama:</strong> {booking.nama}</p>
+                <p><strong>Mobil:</strong> {booking.mobil}</p>
+                <p><strong>Layanan:</strong> {layananLabel[booking.layanan] || booking.layanan}</p>
+                <p><strong>Tambahan:</strong> {booking.addOn === "none" ? "Tidak ada" : booking.addOn}</p>
+                <p><strong>Tanggal:</strong> {booking.tanggal}</p>
+                <p><strong>Jam:</strong> {booking.jam}</p>
+                <p className="total-line"><strong>Total:</strong> Rp {formatRupiah(booking.total)}</p>
+              </div>
+            ) : (
+              <div className="receipt-empty">
+                <p>Silakan isi form booking di samping untuk melihat estimasi dan konfirmasi pesanan.</p>
+              </div>
+            )}
+          </aside>
+        </section>
+
+        <section className="testimonial-block">
+          <div className="section-head">
+            <span className="mini-label dark">Testimoni</span>
+            <h2>Yang pelanggan bilang</h2>
+          </div>
+
+          <div className="testimonial-grid">
+            <blockquote>
+              “Prosesnya cepat, hasilnya kinclong, dan mobil terasa lebih bersih dari sebelumnya.”
+              <footer>— Raka, Jakarta</footer>
+            </blockquote>
+            <blockquote>
+              “Booking online gampang banget. Nggak perlu antre dan harganya juga jelas.”
+              <footer>— Dinda, Bandung</footer>
+            </blockquote>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
 }
